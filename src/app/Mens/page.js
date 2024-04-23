@@ -1,20 +1,41 @@
-import Footer from "@/app/components/Footer";
-import NavBar from "@/app/components/NavBar";
+"use client"
 import React from "react";
-
+import { IoBagHandleSharp } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 const Mens = () => {
+  const {  userId } = useAuth();
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (userId) {
+      router.push('/'); // Replace '/destination' with the desired route
+    } else {
+      router.push('/sign-in');
+    }
+  };
+
   return (
     <>
-      <NavBar />
+     
       <div className="flex items-center justify-center w-full h-full pt-16 md:pt-28 pb-9">
         <div className="grid grid-rows-none md:grid-cols-4 gap-10">
           {/* <!-- Row 1 --> */}
           <div className="bg-gray-200 p-4 ">
             <img src="promotion1.jpg" />
-            <div className=" flex flex-col items-start justify-center">
+            <div className=" flex flex-row  ">
+              <div className="flex flex-col items-start">
             <h1 className="font-mono font-bold text-xl">Mens Tshirt</h1>
             <h2 className="font-mono font-bold text-xl">Price : 900 rs</h2>
             </div>
+            <div className="flex items-end ml-20 mb-2 cursor-pointer" onClick={handleClick}>
+            
+            <IoBagHandleSharp className="text-2xl cursor-pointer"/>
+           
+            </div>
+            </div>
+           
+            
           </div>
           <div className="bg-gray-200 p-4  ">
             <img src="menitem1.png" className="max-w-60" />
@@ -58,7 +79,7 @@ const Mens = () => {
         </div>
       </div>
 
-      <Footer />
+      
     </>
   );
 };

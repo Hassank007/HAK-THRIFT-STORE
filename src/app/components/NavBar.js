@@ -4,8 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks } from "../lib";
-
+import Auth from "./Auth";
 const NavBar = () => {
+ 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -15,10 +16,12 @@ const NavBar = () => {
     <div className="w-full bg-black h-16   flex flex-row justify-between ">
       <div className="flex flex-row ">
         <div className="flex  py-4  sm:px-20  ">
-          <img
-            src="./logo-white.svg"
-            className=" sm:w-[19rem] sm:ml-0 w-[12rem] ml-2"
-          />
+          <a href="/">
+            <img
+              src="./logo-white.svg"
+              className=" sm:w-[19rem] sm:ml-0 w-[12rem] ml-2"
+            />
+          </a>
         </div>
         {/* Desktop NAV */}
         <div className="hidden sm:flex flex-grow justify-start items-start w-[27rem] ">
@@ -48,14 +51,8 @@ const NavBar = () => {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-center sm:ml-24 pr-[20px] ml-[20px]">
-          <Link
-            href="/Login"
-            className="bg-black hover:bg-gray-400 text-white py-1 px-4 rounded-xl ml-1 font-sans outline outline-white outline-1 "
-          >
-            Login
-          </Link>
-        </div>
+        <Auth/>
+      
 
         {/* Mobile NAV */}
         <div className="sm:hidden flex flex-1 justify-end items-center">
